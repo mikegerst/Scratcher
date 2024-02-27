@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Scratcher is ERC1155, Ownable {
-
+    // Chainlink SubscriptionID: 9647
     uint prizePool = 0;
     uint nextId = 1;
     uint liveScratchers = 0;
