@@ -12,7 +12,6 @@ import "hardhat/console.sol";
  * It also allows the owner to withdraw the Ether in the contract
  */
 contract YourContract {
-
 	uint8 public nonlinearity;
     uint256 public inf;
 
