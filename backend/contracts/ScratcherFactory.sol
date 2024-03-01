@@ -1,4 +1,5 @@
 pragma solidity ^0.8.17;
+
 import "./Scratcher.sol";
 
 contract ScratcherFractory {
@@ -10,7 +11,7 @@ contract ScratcherFractory {
         string name;
     }
     mapping(uint => ScratcherInfo) scratcherAddresses;
-    event ScartcherCreated(string _name, address _address);
+    event ScartcherCreated(uint id, string _name, address _address);
     
     function createScratcher(uint64 chainlinkVRFSubscriptionId, 
                 string memory name, 
@@ -22,8 +23,8 @@ contract ScratcherFractory {
                     Scratcher scratcher = new Scratcher(chainlinkVRFSubscriptionId, name, symbol, price, totalForSale, maxPurchase, msg.sender);
                     address scratcherAddress = address(scratcher);
                     scratcherAddresses[nextScratcherId] = ScratcherInfo(nextScratcherId, scratcherAddress, name); 
+                    emit ScartcherCreated(nextScratcherId, name, scratcherAddress);
                     nextScratcherId++;
-                    emit ScartcherCreated(name, scratcherAddress);
                     return scratcherAddress;
                 }
 
