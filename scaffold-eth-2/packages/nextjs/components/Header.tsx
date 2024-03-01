@@ -17,7 +17,7 @@ type HeaderMenuLink = {
 export const menuLinks: HeaderMenuLink[] = [
   {
     label: "My lily pads",
-    href: "/",
+    href: "/lilypads",
   },
   {
     label: "Explore ponds",
@@ -43,7 +43,7 @@ export const HeaderMenuLinks = () => {
               passHref
               className={`${
                 isActive ? "bg-lime-500 shadow-md" : ""
-              } hover:bg-lime-300 hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+              } hover:bg-lime-300 hover:shadow-md focus:!bg-lime-300 active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
             >
               {icon}
               <span>{label}</span>
