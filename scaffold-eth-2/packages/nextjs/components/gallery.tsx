@@ -1,8 +1,8 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 
-import ImageGrid from './ImageGrid';
-import { getImagePaths } from '../utils/scaffold-eth/getImagePaths';
+// import ImageGrid from './ImageGrid';
+// import { getImagePaths } from '../utils/scaffold-eth/getImagePaths';
 
 const Gallery = () => {
   const [images, setImages] = useState([]);
