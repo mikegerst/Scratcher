@@ -20,7 +20,9 @@ contract Scratcher is ERC721, ERC721Burnable, VRFConsumerBaseV2,  Ownable {
     //Subscription ID: 1441
     
     uint price;
-    uint64 maxPurchase;
+    uint64 maxPurchasePerAddress;
+    uint totalForSale;
+    uint totalSold = 0;
 
     mapping(address => uint) numberPurchased;
     mapping(uint => bool) nftScratched;
@@ -59,24 +61,28 @@ contract Scratcher is ERC721, ERC721Burnable, VRFConsumerBaseV2,  Ownable {
     uint256 public currentResult;
 
     //VRF Variables end
-    constructor(address initialOwner, string memory name, string memory symbol, uint _price, uint64 _maxPurchase) ERC721(name, symbol) VRFConsumerBaseV2(0x2eD832Ba664535e5886b75D64C46EB9a228C2610)
-         Ownable() {
+    constructor(uint64 chainlinkVRFSubscriptionId ,string memory name, string memory symbol, uint _price, uint _totalForSale, uint64 _maxPurchase, address initialOwner) ERC721(name, symbol) VRFConsumerBaseV2(0x2eD832Ba664535e5886b75D64C46EB9a228C2610)
+         Ownable(initialOwner) {
             COORDINATOR = VRFCoordinatorV2Interface(
             0x2eD832Ba664535e5886b75D64C46EB9a228C2610
         );
+        s_subscriptionId = chainlinkVRFSubscriptionId;
         price = _price;
-        maxPurchase = _maxPurchase;
+        totalForSale = _totalForSale;
+        maxPurchasePerAddress = _maxPurchase;
     }
 
     function buyScratcher() payable public {
         require(msg.value >= price, "Not enough funds sent");
-        require(numberPurchased[msg.sender] < maxPurchase, "Reached purchase limit");
+        require(totalSold < totalForSale, "Sold Out!!!");
+        require(numberPurchased[msg.sender] < maxPurchasePerAddress, "Reached purchase limit");
         safeMint(msg.sender, nextId);
         nftScratched[nextId] = false;
         nextId++;
         liveScratchers++;
         numberPurchased[msg.sender]++;
         prizePool += msg.value;
+        totalSold++;
     }
 
     function scratch(uint id) external {
