@@ -25,7 +25,7 @@ export const menuLinks: HeaderMenuLink[] = [
   },
   {
     label: "Create a pond",
-    href: "/",
+    href: "/pondcreation",
   },
 ];
 
