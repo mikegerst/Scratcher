@@ -2,7 +2,7 @@ pragma solidity ^0.8.17;
 
 import "./Scratcher.sol";
 
-contract ScratcherFractory {
+contract ScratcherFactory {
     uint nextScratcherId = 0;
 
     struct ScratcherInfo {
