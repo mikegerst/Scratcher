@@ -8,6 +8,16 @@ import { Bars3Icon, BugAntIcon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
+//Particle Imports
+import { WalletEntryPosition } from "@particle-network/auth";
+import { ArbitrumGoerli } from "@particle-network/chains";
+import { evmWallets } from "@particle-network/connect";
+import { ModalProvider } from "@particle-network/connect-react-ui";
+import { ConnectButton } from "@particle-network/connect-react-ui"; 
+import { useAccount } from "@particle-network/connect-react-ui";
+import "@particle-network/connect-react-ui/dist/index.css";
+
+
 type HeaderMenuLink = {
   label: string;
   href: string;
@@ -31,6 +41,10 @@ export const menuLinks: HeaderMenuLink[] = [
 
 export const HeaderMenuLinks = () => {
   const pathname = usePathname();
+
+  const account = useAccount();
+
+  console.log("account",account)
 
   return (
     <>
@@ -67,6 +81,43 @@ export const Header = () => {
   );
 
   return (
+    <ModalProvider 
+    options={{
+      projectId: String(process.env.NEXT_PUBLIC_REACT_APP_PROJECT_ID),
+      clientKey: String(process.env.NEXT_PUBLIC_REACT_APP_CLIENT_KEY),
+      appId: String(process.env.NEXT_PUBLIC_REACT_APP_APP_ID),
+      chains: [ArbitrumGoerli],
+      particleWalletEntry: {
+        //optional: particle wallet config
+        displayWalletEntry: true, //display wallet button when connect particle success.
+        defaultWalletEntryPosition: WalletEntryPosition.TR,
+        supportChains: [ArbitrumGoerli],
+        customStyle: {}, //optional: custom wallet style
+      },
+      securityAccount: {
+        //optional: particle security account config
+        //prompt set payment password. 0: None, 1: Once(default), 2: Always
+        promptSettingWhenSign: 1,
+        //prompt set master password. 0: None(default), 1: Once, 2: Always
+        promptMasterPasswordSettingWhenLogin: 1,
+      },
+      wallets: evmWallets({
+        projectId: "walletconnect projectId", //replace with walletconnect projectId
+        showQrModal: false,
+      }),
+    }}
+    theme={"auto"}
+    language={"en"} //optional:localize, default en
+    walletSort={["Particle Auth", "Wallet"]} //optional:walelt order
+    particleAuthSort={[
+      //optional:display particle auth items and order
+      "email",
+      "phone",
+      "google",
+      "apple",
+      "facebook",
+    ]}
+  >
     <div className="sticky lg:static top-0 navbar bg-lime-50 min-h-0 flex-shrink-0 justify-between z-20 shadow-md shadow-secondary px-0 sm:px-2 text-black">
       <div className="navbar-start w-auto lg:w-1/2">
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
@@ -105,9 +156,10 @@ export const Header = () => {
         </ul>
       </div>
       <div className="navbar-end flex-grow mr-4">
-        <RainbowKitCustomConnectButton />
-        <FaucetButton />
+        <ConnectButton />
+        {/* <FaucetButton /> */}
       </div>
     </div>
+    </ModalProvider>
   );
 };
