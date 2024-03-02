@@ -40,8 +40,11 @@ const PondCreator: React.FC = () => {
               <label htmlFor="winRate" className="block text-black font-bold">Win rate distribution (1-256)</label>
               <input type="text" id="winRate" className="mt-1 mb-4 p-2 border rounded" />
 
-              <label htmlFor="expiryDate" className="block text-black font-bold">Expiry Date</label>
-              <input type="date" id="expiryDate" className="mt-1 mb-4 p-2 border rounded" />
+              <label htmlFor="name" className="block text-black font-bold" aria-required>Pond Name</label>
+              <input type="text" id="name" className="mt-1 mb-4 p-2 border rounded" />
+
+              <label htmlFor="Symbol" className="block text-black font-bold" aria-required>Symbol</label>
+              <input type="text" id="expiryDate" className="mt-1 mb-4 p-2 border rounded" />
             
             <button onClick={handleCreatePond} className="block bg-lime-500 text-white p-2 rounded mt-1">
               Create Pond
@@ -53,11 +56,14 @@ const PondCreator: React.FC = () => {
             {/* After Pond Creation but before funding */}
             <div className="">
               <h2 className="text-lg font-bold mb-4 text-black">Fill your pond with otherworldly delights</h2>
-              <label htmlFor="tokenAddress" className="block text-black">Token Address</label>
-              <input type="text" id="tokenAddress" className="mt-1 mb-4 p-2 border rounded" />
+              <label htmlFor="price" className="block text-black" aria-required>Price per Scratcher (ETH)</label>
+              <input type="number" id="price" className="mt-1 mb-4 p-2 border rounded" />
 
-              <label htmlFor="amount" className="block text-black">Amount (decimal adjusted)</label>
-              <input type="text" id="amount" className="mt-1 mb-4 p-2 border rounded" />
+              <label htmlFor="totalForSale" className="block text-black" aria-required>Total for Sale</label>
+              <input type="number" id="totalForSale" className="mt-1 mb-4 p-2 border rounded" />
+
+              <label htmlFor="maxPurchase" className="block text-black" aria-required>Max amount one person can purchase</label>
+              <input type="number" id="maxPurchase" className="mt-1 mb-4 p-2 border rounded" />
             </div>
             <button onClick={handleFundPond} className="block bg-lime-500 text-white p-2 rounded mt-1">
               Fund Pond

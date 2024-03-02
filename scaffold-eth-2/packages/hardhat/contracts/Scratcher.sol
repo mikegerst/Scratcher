@@ -92,7 +92,7 @@ contract Scratcher is ERC721, ERC721Burnable, VRFConsumerBaseV2,  Ownable {
     uint256 public lastRequestId;
 
     bytes32 keyHash =
-             0x4b09e658ed251bcafeebbc69400383d49f344ace09b9576fe248bb02c003fe9f;
+             0x027f94ff1465b3525f9fc03e9ff7d6d2c0953482246dd6ae07570c45d6631414;
 
     uint32 callbackGasLimit = 25000000;
 
@@ -116,7 +116,7 @@ contract Scratcher is ERC721, ERC721Burnable, VRFConsumerBaseV2,  Ownable {
         VRFConsumerBaseV2(0x2eD832Ba664535e5886b75D64C46EB9a228C2610) // Call to VRFConsumerBaseV2 constructor
         Ownable() // Call to Ownable constructor. If Ownable doesn't expect arguments, it should be Ownable(), not Ownable(initialOwner).
     {
-        COORDINATOR = VRFCoordinatorV2Interface(0x7a1BaC17Ccc5b313516C5E16fb24f7659aA5ebed);
+        COORDINATOR = VRFCoordinatorV2Interface(0x50d47e4142598E3411aA864e08a44284e471AC6f);
     }
     function safeMint(address to, uint256 tokenId) internal {
         _safeMint(to, tokenId);

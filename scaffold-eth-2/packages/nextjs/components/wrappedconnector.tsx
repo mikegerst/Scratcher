@@ -8,6 +8,7 @@ import { evmWallets } from "@particle-network/connect";
 import { ModalProvider } from "@particle-network/connect-react-ui";
 import { ConnectButton } from "@particle-network/connect-react-ui"; 
 import "@particle-network/connect-react-ui/dist/index.css";
+import { arbitrumSepolia } from 'viem/chains';
 
 
 const WrappedModal = () => { return(
@@ -17,12 +18,12 @@ options={{
   projectId: String("befdedc2-4155-4709-a4e0-370f42e665f2"),
   clientKey: String("clsCaYGWDSyfHirivVmlbcZcvKOqHbK8b4Yyb6bi"),
   appId: String("e2e7f3aa-2c69-41af-9a6c-cf8c4c3d677c"),
-  chains: [ArbitrumGoerli],
+  chains: [ArbitrumGoerli, arbitrumSepolia], //optional: support chains
   particleWalletEntry: {
     //optional: particle wallet config
     displayWalletEntry: true, //display wallet button when connect particle success.
     defaultWalletEntryPosition: WalletEntryPosition.TR,
-    supportChains: [ArbitrumGoerli],
+    supportChains: [ArbitrumGoerli, arbitrumSepolia],
     customStyle: {}, //optional: custom wallet style
   },
   securityAccount: {
