@@ -1,0 +1,20 @@
+/* styles/MagicImage.module.css */
+.imageContainer {
+    position: absolute;
+    width: 100%; /* Adjust based on your needs */
+    height: auto; /* Adjust based on your needs */
+    overflow: hidden;
+    inset: 0;
+    z-index: 20;
+  }
+  
+.cursorHole {
+    position: absolute;
+    width: 50px; /* Size of the transparent area */
+    height: 50px;
+    border-radius: 50%; /* Makes the area circular */
+    pointer-events: none; /* Allows events to pass through */
+    /* background: radial-gradient(circle, transparent 38%, rgba(255, 255, 255, 0.463) 60%); */
+    mix-blend-mode: destination-out; /* Key property for the effect */
+    transform: translate(-50%, -50%); /* Centers the circle on the cursor */
+  }
