@@ -1,117 +1,49 @@
-# NFT Explorer CW3D Template
+# 🎟 Scratch Pad - A Chainlink VRF Powered Lottery Dapp
 
-This NFT Explorer dapp is set up to be created using the create-web3-dapp npx package.
-![image](https://user-images.githubusercontent.com/72762629/235919616-ba92fb9e-c171-4d7f-a928-862c80009075.png)
+🍀 Scratch Pad is a blockchain-based lottery game that harnesses the power of Chainlink's Verifiable Random Function (VRF) to ensure each scratch-off is fair and fully transparent. Players can experience the thrill of scratching off tickets with the assurance that the outcome is secure and verifiable. By integrating Particle Network's account abstraction SDK, Scratch Pad offers a simplified and seamless user experience, allowing players to enjoy the game without worrying about gas fees or complex wallet setups.
 
-## Resources
-Please refer to CW3D's documentation and the following useful links for an in depth explanation of how to work with projects bootstrapped with CW3D:
+- 🔐 **Chainlink VRF**: Scratch Pad utilizes Chainlink VRF to generate random numbers needed for the lottery draws, ensuring that each scratch-off result is provably fair and cannot be tampered with by any party. (packages/hardhat/contracts/Scratcher.sol Lines: 154-156 )
+- 🧬 **Particle Network SDK**: Our dapp takes advantage of the Particle Network's SDK for account abstraction, enabling a gasless transaction experience and simplifying the onboarding process for users. (packages/nextjs/components/wrappedconnector.tsx)
+- 🎨 **Interactive Scratch Mechanism**: Users can scratch-off pictures with a variety of themes, adding a personalized touch to their gaming experience.
 
--   [Docs](https://docs.alchemy.com/docs/create-web3-dapp) - Everything you need to know when using CW3D
--   [GitHub](https://github.com/alchemyplatform/create-web3-dapp) - look at the extensive code example or start contributing
--   [Website](https://createweb3dapp.alchemy.com) - Learn more about CW3D and add components to your project
--   [Templates](https://createweb3dapp.alchemy.com/#templates) - Check out the pre-built project templates
--   [Components Library](https://createweb3dapp.alchemy.com/#components) - Add features directly to your project through components
--   [Examples](https://github.com/alchemyplatform/create-web3-dapp-examples) - See the components implemented in a real world dapp
--   [Community](https://t.me/createweb3dapp) - Meet other builders, get support, and give feedback!
+## Features
 
-## Overview
+- ⚖️ **Provably Fair Gaming**: Built-in randomness provided by Chainlink VRF for trustworthy outcomes.
+- 💳 **Gasless Transactions**: Enjoy the game without worrying about Ethereum gas fees thanks to Particle Network.
+- 📲 **User-Friendly Interface**: A straightforward UI/UX that's easy for anyone to pick up and play.
+- 🛠️ **Built with Scaffold-ETH 2**: Leverages the latest tools and frameworks for Ethereum development.
 
-This project contains a fully fledged Next.js based NFT Explorer capable of fetching nfts by:
-- Collections
-- External and connected wallet
+## Smart Contracts
 
-Across all EVM compatible chains.
+- `Scratcher.sol`: Defines the NFT-based scratch-off tickets with Chainlink VRF integration for randomness, and a prize pool for winnings.
+- `ScratcherFactory.sol`: A factory contract that deploys individual scratch-off games with unique settings for price, supply, and purchase limits.
 
-Created using [Create Web3 Dapp](https://github.com/alchemyplatform/create-web3-dapp). It is , providing you with a seamless way to get your dApp up and running in no time.
+## Quickstart
 
-This boilerplate is built using [CW3D (Create Web3 Dapp)](https://github.com/alchemyplatform/create-web3-dapp), a powerful tool developed by [Alchemy](https://www.alchemy.com/) that allows developers to rapidly create and deploy dApps.
+To run Scratch Pad locally:
 
-## What's Included?
+```bash
+git clone https://github.com/scratch-pad/scratch-pad.git
+cd scratch-pad
+yarn install
+yarn chain
+yarn deploy
+yarn start
 
-This boilerplate has everything you need to start building a dapp:
+Access your dapp at [http://localhost:3000](http://localhost:3000).
 
-- Next.js
-- Wagmi Hooks
-- Ethers.js
-- Rainbowkit
-- Alchemy SDK
+## Documentation
 
-## Supported Chains
+For more details on how to use and extend Scratch Pad, visit our [documentation](https://scratch-pad-docs.io).
 
-The project supports all the major EVM chains:
+Discover more features by visiting our [website](https://scratch-pad.io).
 
- - Ethereum
- - Polygon
- - Arbitrum
- - Optimism
+## Contributing to Scratch Pad
 
+We value your contributions! Please read our [contribution guidelines](https://github.com/scratch-pad/scratch-pad/blob/main/CONTRIBUTING.md) to get started.
 
-## Getting Started
+---
 
-### Prerequisites
+🔨 Built with [Scaffold-ETH 2](https://scaffoldeth.io) | 🌍 Deployed on [Arbitrum Sepolia](https://arbitrum.io)
 
-To get started with this boilerplate, you'll need to have the following software installed on your local machine:
-
-- [Node.js](https://nodejs.org/)
-- [Yarn](https://yarnpkg.com/)
-- [Git](https://git-scm.com/)
-
-### Installation
-
-1. Run create web3 dapp in your terminal and select the NFT Explorer template:
-  ```
-    npx create-web3-dapp@latest 
-  ```
-
-  
-2. Navigate to the project directory:
-   ```
-   cd my-create-web3-dapp
-   ```
-
-  
-Navigate to the[docs](https://docs.alchemy.com/docs/create-web3-dapp) to learn more about using cw3d to spin up your web3 applications
-
-
-### Running the Project
-
-1. Inside the project folder, start the local development server:
-   ```
-   yarn run dev
-   ```
-2. Open your browser and navigate to [`http://localhost:3000/`](http://localhost:3000/) to view the dApp in action.
-
-
-## Project Structure
-
-The boilerplate consists of one root directory:
-
-```
-📦root
- ┣ 📂components
- ┃ ┣ 📂navigation
- ┃ ┃ ┗ 📜navbar.jsx
- ┃ ┗ 📜nftGallery.jsx
- ┣ 📂layout
- ┃ ┗ 📜mainLayout.jsx
- ┣ 📂pages
- ┃ ┣ 📂api
- ┃ ┃ ┣ 📜getNftsForCollection.js
- ┃ ┃ ┗ 📜getNftsForOwner.js
- ┃ ┣ 📜_app.js
- ┃ ┗ 📜index.jsx
- ┣ 📂public
- ┃ ┗ 📜alchemy_logo.svg
- ┣ 📂styles
- ┃ ┣ 📜Home.module.css
- ┃ ┣ 📜Navbar.module.css
- ┃ ┣ 📜NftGallery.module.css
- ┃ ┗ 📜globals.css
- ┣ 📜.env.local
- ┣ 📜.gitignore
- ┣ 📜README.md
- ┣ 📜package-lock.json
- ┗ 📜package.json
-```
-
-Start editing the `pages/index.jsx` file in the root directory to customize the project according to your own needs!
+This README provides an overview of the `Scratcher` and `ScratcherFactory` contracts and how they integrate with Chainlink VRF and Particle Network's account abstraction SDK.
