@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Compatible with OpenZeppelin Contracts ^5.0.0
 
-pragma solidity ^0.8.17;
+pragma solidity >=0.8.0 <0.9.0;
 
 import "./Scratcher.sol";
 
@@ -13,8 +13,9 @@ contract ScratcherFactory {
         uint id;
         address scratcherAddress;
         string name;
+    }
     mapping(uint => ScratcherInfo) scratcherAddresses;
-    event ScartcherCreated(uint id, string _name, address _address);
+    event ScratcherCreated(uint id, string _name, address _address);
     
     function createScratcher(uint64 chainlinkVRFSubscriptionId, 
                 string memory name, 
@@ -26,7 +27,7 @@ contract ScratcherFactory {
                     Scratcher scratcher = new Scratcher(chainlinkVRFSubscriptionId, name, symbol, price, totalForSale, maxPurchase, msg.sender);
                     address scratcherAddress = address(scratcher);
                     scratcherAddresses[nextScratcherId] = ScratcherInfo(nextScratcherId, scratcherAddress, name); 
-                    emit ScartcherCreated(nextScratcherId, name, scratcherAddress);
+                    emit ScratcherCreated(nextScratcherId, name, scratcherAddress);
                     nextScratcherId++;
                     
                     return scratcherAddress;

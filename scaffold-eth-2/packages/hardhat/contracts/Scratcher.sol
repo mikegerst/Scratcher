@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Compatible with OpenZeppelin Contracts ^5.0.0
-pragma solidity ^0.8.20;
+pragma solidity >=0.8.0 <0.9.0;
 
 /*Arbitrum
 VRF Coordinator	
@@ -103,18 +103,21 @@ contract Scratcher is ERC721, ERC721Burnable, VRFConsumerBaseV2,  Ownable {
     uint256 public currentResult;
 
     //VRF Variables end
-    constructor(uint64 chainlinkVRFSubscriptionId ,string memory name, string memory symbol, uint _price, uint _totalForSale, uint64 _maxPurchase, address initialOwner) ERC721(name, symbol) VRFConsumerBaseV2(0x2eD832Ba664535e5886b75D64C46EB9a228C2610)
-         Ownable(initialOwner) payable {
-            COORDINATOR = VRFCoordinatorV2Interface(
-            0x7a1BaC17Ccc5b313516C5E16fb24f7659aA5ebed
-        );
-        prizePool += msg.value;
-        s_subscriptionId = chainlinkVRFSubscriptionId;
-        price = _price;
-        totalForSale = _totalForSale;
-        maxPurchasePerAddress = _maxPurchase;
+    constructor(
+        uint64 chainlinkVRFSubscriptionId,
+        string memory name,
+        string memory symbol,
+        uint _price,
+        uint _totalForSale,
+        uint64 _maxPurchase,
+        address initialOwner
+    ) 
+        ERC721(name, symbol) // Call to ERC721 constructor
+        VRFConsumerBaseV2(0x2eD832Ba664535e5886b75D64C46EB9a228C2610) // Call to VRFConsumerBaseV2 constructor
+        Ownable() // Call to Ownable constructor. If Ownable doesn't expect arguments, it should be Ownable(), not Ownable(initialOwner).
+    {
+        COORDINATOR = VRFCoordinatorV2Interface(0x7a1BaC17Ccc5b313516C5E16fb24f7659aA5ebed);
     }
-
     function safeMint(address to, uint256 tokenId) internal {
         _safeMint(to, tokenId);
     }
