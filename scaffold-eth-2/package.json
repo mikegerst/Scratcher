@@ -33,13 +33,18 @@
   },
   "packageManager": "yarn@3.2.3",
   "devDependencies": {
+    "@types/react": "^17",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3"
   },
   "dependencies": {
     "@chainlink/contracts": "^0.8.0",
+    "@particle-network/connect": "^1.2.1",
     "@particle-network/connect-react-ui": "^1.2.1",
     "@solana/web3.js": "^1.90.0",
-    "framer-motion": "^11.0.8"
+    "ethers": "^6.11.1",
+    "framer-motion": "^11.0.8",
+    "react": "^17.0.0",
+    "wagmi": "^2.5.7"
   }
 }

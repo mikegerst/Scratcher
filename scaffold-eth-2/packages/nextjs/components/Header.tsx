@@ -10,11 +10,6 @@ import { useOutsideClick } from "~~/hooks/scaffold-eth";
 import WrappedModal from "./wrappedconnector";
 
 //Particle Imports
-import { WalletEntryPosition } from "@particle-network/auth";
-import { ArbitrumGoerli } from "@particle-network/chains";
-import { evmWallets } from "@particle-network/connect";
-import { ModalProvider } from "@particle-network/connect-react-ui";
-import { ConnectButton } from "@particle-network/connect-react-ui"; 
 import { useAccount } from "@particle-network/connect-react-ui";
 import "@particle-network/connect-react-ui/dist/index.css";
 

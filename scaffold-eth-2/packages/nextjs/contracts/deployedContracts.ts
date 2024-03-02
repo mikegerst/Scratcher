@@ -5,9 +5,84 @@
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
-  31337: {
+  421614: {
+    ScratcherFactory: {
+      address: "0x7c52B55B7Fb6Ef0C7dF636F270DC7e4bA0bAeEB8",
+      abi: [
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "uint256",
+              name: "id",
+              type: "uint256",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "_name",
+              type: "string",
+            },
+            {
+              indexed: false,
+              internalType: "address",
+              name: "_address",
+              type: "address",
+            },
+          ],
+          name: "ScratcherCreated",
+          type: "event",
+        },
+        {
+          inputs: [
+            {
+              internalType: "uint64",
+              name: "chainlinkVRFSubscriptionId",
+              type: "uint64",
+            },
+            {
+              internalType: "string",
+              name: "name",
+              type: "string",
+            },
+            {
+              internalType: "string",
+              name: "symbol",
+              type: "string",
+            },
+            {
+              internalType: "uint256",
+              name: "price",
+              type: "uint256",
+            },
+            {
+              internalType: "uint256",
+              name: "totalForSale",
+              type: "uint256",
+            },
+            {
+              internalType: "uint64",
+              name: "maxPurchase",
+              type: "uint64",
+            },
+          ],
+          name: "createScratcher",
+          outputs: [
+            {
+              internalType: "address",
+              name: "",
+              type: "address",
+            },
+          ],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+      ],
+      inheritedFunctions: {},
+    },
     YourContract: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0xAF42261A20Dc05070b814ebBd4A79f52AA73aD61",
       abi: [
         {
           inputs: [],
